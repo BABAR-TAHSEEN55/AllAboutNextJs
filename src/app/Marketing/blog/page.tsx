@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-    title: "Super",
+	title: "Super",
 };
-const page = () => {
-    return <div>Blog Page</div>;
+const page = async () => {
+	await new Promise((resolve) => {
+		setTimeout(() => {
+			resolve("Ok");
+		}, 3000);
+	});
+	return <div>Blog Page</div>;
 };
 
 export default page;
