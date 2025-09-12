@@ -17,3 +17,4 @@ const Counter = () => {
     );
 };
 export default Counter;
+    // NOTE : THis is client side component
