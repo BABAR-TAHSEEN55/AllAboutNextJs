@@ -12,3 +12,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 //NOTE : Now more about Parallel Routes
+
+//NOTE : You can perform selective Hydration

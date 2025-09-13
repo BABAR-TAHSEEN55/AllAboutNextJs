@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const page = () => {
+	console.log("I am a Server Component")
 	return (
 		<div>
 			<h1>Welcome Home!!!</h1>
