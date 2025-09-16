@@ -85,3 +85,39 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 - Handle 404s gracefully with custom not-found components.
 - Use `"use client"` only when necessary for React hooks.
 - Take advantage of TypeScript and ESLint for maintainable code.
+
+---
+
+## 📚 Additional Notes & Advanced Patterns
+
+- **Route Groups**: Folders wrapped in parentheses (e.g., `(auth)`) are called Route Groups. They help organize related routes without affecting the URL structure.
+- **Parallel Routes**: Next.js supports parallel routes for advanced routing scenarios, allowing selective hydration and more flexible layouts.
+- **Selective Hydration**: You can hydrate only specific parts of your UI, optimizing performance by combining server and client components as needed.
+- **Active Links**: Use utilities like `isActive` or compare the current pathname to highlight the active navigation link.
+- **Naming Flexibility**: Page and component names do not need to match their file names. This allows for more descriptive or context-specific naming.
+- **Dynamic vs. Static Metadata**: You cannot have both static and dynamic metadata in the same file. Page-level metadata always takes priority over layout metadata.
+- **Error Boundaries**: You can place `error.tsx` at both individual route and global levels. If placed at the individual route level, only that route will show the error UI; if placed globally, the entire path will show the error UI.
+- **Not Found Pages**: Custom `not-found.tsx` components provide user-friendly 404 handling for sections like Marketing and Products.
+- **Loading UI**: Use `loading.tsx` for spinners, skeletons, or other loading indicators. This wraps everything in a Suspense boundary for smoother UX.
+- **Client Components**: Use the `"use client"` directive only when necessary (e.g., for React hooks). Metadata cannot be exported from client components.
+- **Server Components in Client Components**: You cannot directly use server components inside client components, but you can pass server components as children to client components.
+- **Navigation**: Use `<Link>` for client-side navigation. For server components, you can use redirects; for client components, use the `useRouter` hook.
+- **Search Params**: Page components have access to both `params` and `searchParams`. Layout components only have access to `params`.
+- **Absolute Routing**: Use absolute paths to break free from layout templates when needed.
+- **Static Params Generation**: Use `generateStaticParams` for static site generation, especially useful for blog posts or product listings.
+- **TypeScript & ESLint**: Take advantage of TypeScript for type safety and ESLint for code quality and maintainability.
+- **Component Hierarchy**: Place client-only components at the lowest level possible to avoid making all child components client components unnecessarily.
+
+### Example Patterns
+
+```/dev/null/example.tsx#L1-12
+// Passing a server component as a child to a client component:
+<ClientComponent>
+  <ServerComponent />
+</ClientComponent>
+
+// In ClientComponent:
+const ClientComponent = ({ children }) => (
+  <div>{children}</div>
+);
+```
